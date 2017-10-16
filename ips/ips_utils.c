@@ -1,7 +1,7 @@
 /*
     ips_utils.c
 
-    Created by Dmitrii Toksaitov on Sat Aug 20 10:04:03 KGT 2012
+    Created by Dmitrii Toksaitov, 2012
 */
 
 #include "ips_utils.h"
@@ -18,7 +18,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int ips_utils_get_number_of_cpu_cores() {
+#pragma mark - System Information
+
+int ips_utils_get_number_of_cpu_cores()
+{
     int result;
 
 #ifdef WIN32
@@ -54,7 +57,9 @@ int ips_utils_get_number_of_cpu_cores() {
     return result;
 }
 
-char* ips_utils_read_text_file(char *path)
+#pragma mark - File I/O
+
+char* ips_utils_read_text_file(const char *path)
 {
     char *text = NULL;
 
@@ -68,12 +73,11 @@ char* ips_utils_read_text_file(char *path)
         rewind(file);
 
         if (file_size > 0) {
-            text = (char *) malloc(sizeof(char) * ((size_t) file_size + 1));
-            last_position = fread(text, sizeof(char), (size_t) file_size, file);
+            text = (char *) malloc(sizeof(*text) * ((size_t) file_size + 1));
+            last_position = fread(text, sizeof(*text), (size_t) file_size, file);
             text[last_position] = '\0';
         }
     }
 
     return text;
 }
-

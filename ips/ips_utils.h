@@ -7,14 +7,19 @@
 #ifndef IPS_UTILS_H
 #define IPS_UTILS_H
 
-static inline float ips_utils_clamp(float x, float min, float max)
-{
-    return x > max ? max : (x < min ? min : x);
-}
+#pragma mark - Common Macros
+
+#define IPS_MIN(A,B) (((A)<(B))?(A):(B))
+#define IPS_MAX(A,B) (((A)>(B))?(A):(B))
+#define IPS_CLAMP(X,MIN,MAX) (IPS_MIN(IPS_MAX((X),(MIN)),(MAX)))
+#define IPS_NORMALIZE(X,MIN,MAX) (((X)-(MIN))/((MAX)-(MIN)));
+
+#pragma mark - System Information
 
 int ips_utils_get_number_of_cpu_cores();
 
-char* ips_utils_read_text_file(char *path);
+#pragma mark - File I/O
+
+char* ips_utils_read_text_file(const char *path);
 
 #endif
-
