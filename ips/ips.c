@@ -241,8 +241,6 @@ void ips_update_image(
             pool->size++;
         }
     }
-
-    while (pool->size != 0) { }
 }
 
 void ips_set_brightness_and_contrast(ips_task_t *task)
@@ -295,9 +293,7 @@ void *ips_thread_process_image_part(void *args)
     ips_task_pool_t *pool = (ips_task_pool_t *) args;
     ips_task_t *task;
 
-    for (;;) {
-        while (pool->size == 0) { }
-
+    while (pool->size != 0) {
         if (pool->size > 0) {
             // Get a new task
 
