@@ -46,6 +46,19 @@ Run the program from the `build/ips/` directory
 On Windows you can also drag and drop an image file to manipulate into the
 program's window.
 
+## Tasks
+
+Create and parallelize Sobel and Median filters. Use Pthreads and the producer-consumer approach to distribute tasks to workers. The worker threads should form a pool.
+
+* Use the Pthreads API
+* All modification should be applied to the `ips.c` file.
+* Start working by parallelizing the brightness and contrast adjustments.
+
+### Tasks for Extra Points
+
+* Accelerate the filters by applying the SIMD intrinsic functions of GCC.
+* Accelerate the filters even further by writing the Median and Sobel shaders for the program (ask the instructor on how to modify the `ips.c` file for that).
+
 ## Credits
 
 ips was created by [Dmitrii Toksaitov](https://github.com/toksaitov).
